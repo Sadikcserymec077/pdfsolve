@@ -68,7 +68,7 @@ app.post('/api/pdf/upload', upload.single('pdf'), async (req, res) => {
     try {
         const newPdf = new PDF({
             originalName: req.file.originalname,
-            filepath: req.file.path
+            filepath: req.file.path.replace(/\\/g, '/')
         });
         await newPdf.save();
         res.json({ id: newPdf._id, message: 'Upload successful' });

@@ -98,7 +98,7 @@ export default function PDFViewerPage() {
     if (loading) return <div className="p-8 text-center text-xl">Loading...</div>;
     if (!pdfData) return <div className="p-8 text-center text-xl text-red-500">PDF not found</div>;
 
-    const pdfUrl = `${API_BASE_URL}/${pdfData.filepath}`;
+    const pdfUrl = `${API_BASE_URL}/${pdfData.filepath.replace(/\\/g, '/')}`;
 
     return (
         <div className="flex flex-col lg:flex-row gap-6 h-[calc(100vh-5rem)] pb-4 overflow-hidden">
